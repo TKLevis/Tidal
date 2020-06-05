@@ -37,6 +37,9 @@ s = sound
 cc :: Pattern String -> ControlPattern
 cc = grp [mF "ccn", mF "ccv"]
 
+nrpn :: Pattern String -> ControlPattern
+nrpn = grp [mI "nrpn", mI "val"]
+
 -- | Singular params
 
 pF :: String -> Pattern Double -> ControlPattern
@@ -157,6 +160,7 @@ delayfeedback = pF "delayfeedback"
 -- | a pattern of numbers from 0 to 1. Sets the length of the delay.
 delaytime :: Pattern Double -> ControlPattern
 delaytime = pF "delaytime"
+
 detune :: Pattern Double -> ControlPattern
 detune = pF "detune"
 
@@ -172,6 +176,9 @@ dry = pF "dry"
 -}
 end :: Pattern Double -> ControlPattern
 end = pF "end"
+
+freq :: Pattern Double -> ControlPattern
+freq = pF "freq"
 
 -- | a pattern of numbers that specify volume. Values less than 1 make
 -- the sound quieter. Values greater than 1 make the sound louder. For
@@ -281,6 +288,13 @@ ophatdecay = pF "ophatdecay"
 -}
 orbit :: Pattern Int -> ControlPattern
 orbit = pI "orbit"
+
+overgain :: Pattern Double -> ControlPattern
+overgain = pF "overgain"
+
+overshape :: Pattern Double -> ControlPattern
+overshape = pF "overshape"
+
 -- | a pattern of numbers between 0 and 1, from left to right (assuming stereo), once round a circle (assuming multichannel)
 pan :: Pattern Double -> ControlPattern
 pan = pF "pan"
@@ -368,6 +382,10 @@ voice = pF "voice"
 -- | formant filter to make things sound like vowels, a pattern of either `a`, `e`, `i`, `o` or `u`. Use a rest (`~`) for no effect.
 vowel :: Pattern String -> ControlPattern
 vowel = pS "vowel"
+
+voweli :: Pattern Int -> ControlPattern
+voweli = pI "vowel"
+
 waveloss :: Pattern Double -> ControlPattern
 waveloss = pF "waveloss"
 
@@ -469,7 +487,7 @@ lbrick :: Pattern Double -> ControlPattern
 lbrick = pF "lbrick"
 
 -- aliases
-att, bpf, bpq, chdecay, ctf, ctfg, delayfb, delayt, det, gat, hg, hpf, hpq, lag, lbd, lch, lcl, lcp, lcr, lfoc, lfoi
+att, bpf, bpq, chdecay, ctf, ctfg, delayfb, dfb, delayt, dt, det, gat, hg, hpf, hpq, lag, lbd, lch, lcl, lcp, lcr, lfoc, lfoi
    , lfop, lht, llt, loh, lpf, lpq, lsn, ohdecay, phasdp, phasr, pit1, pit2, pit3, por, rel, sz, sag, scl, scp
    , scr, sld, std, stt, sus, tdecay, tremdp, tremr, vcf, vco, voi
  :: Pattern Double -> ControlPattern
@@ -480,7 +498,9 @@ chdecay = clhatdecay
 ctf = cutoff
 ctfg = cutoffegint
 delayfb = delayfeedback
+dfb = delayfeedback
 delayt = delaytime
+dt = delaytime
 det = detune
 gat = gate
 hg = hatgrain
@@ -558,6 +578,20 @@ ccn :: Pattern Double -> ControlPattern
 ccn = pF "ccn"
 ccv :: Pattern Double -> ControlPattern
 ccv = pF "ccv"
+
+polyTouch :: Pattern Double -> ControlPattern
+polyTouch = pF "polyTouch"
+
+midibend :: Pattern Double -> ControlPattern
+midibend = pF "midibend"
+
+miditouch :: Pattern Double -> ControlPattern
+miditouch = pF "miditouch"
+
+nrpnn :: Pattern Int -> ControlPattern
+nrpnn = pI "nrpn"
+nrpnv :: Pattern Int -> ControlPattern
+nrpnv = pI "val"
 
 ctlNum :: Pattern Double -> ControlPattern
 ctlNum = pF "ctlNum"
